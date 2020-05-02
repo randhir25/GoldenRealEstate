@@ -1,0 +1,29 @@
+{
+  "goldenRealEstateApp": {
+    "todos": {
+      "home": {
+        "title": "Todos",
+        "createLabel": "Create a new Todos",
+        "createOrEditLabel": "Create or edit a Todos",
+        "notFound": "No Todos found"
+      },
+      "created": "A new Todos is created with identifier {{ param }}",
+      "updated": "A Todos is updated with identifier {{ param }}",
+      "deleted": "A Todos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Todos {{ id }}?"
+      },
+      "detail": {
+        "title": "Todos"
+      },
+      "assinedTo": "Assigned To",
+      "completed": "Completed",
+      "statust": "Status",
+      "remarks": "Remarks",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "unit": "Unit",
+      "task": "Task"
+    }
+  }
+}

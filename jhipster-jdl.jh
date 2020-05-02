@@ -1,0 +1,73 @@
+entity Project {
+	projectName String
+   
+}
+entity Building {	
+    buildingName String
+}
+
+entity Unit {
+	unitTitle String,
+    unitType String,
+    floorNo Long,
+    
+    
+}
+entity Todos{
+    assinedTo String,
+    completed Long,
+    statust Boolean,
+    remarks String,
+    startDate Instant,
+    endDate Instant
+}
+entity Task {
+	title String,    
+	description String,
+    expert String
+}
+entity Region{
+    regionName String
+}
+entity Country{
+   countryName String
+}
+entity Address {
+	streetName String,
+	postalCode String required,
+	city String,
+	stateProvince String
+}
+
+relationship OneToOne {
+	Country{region(regionName)} to Region
+}
+
+relationship OneToOne {
+	Address{country(countryName)} to Country
+}
+
+relationship OneToMany {
+	Address to Project{address(streetName)}
+}
+relationship OneToMany {
+	Project{building} to Building{project(projectName)}
+}
+
+relationship OneToMany {
+	Building{unit} to Unit{building(buildingName)}
+}
+relationship OneToMany {
+    Unit{todos} to Todos {unit(unitTitle)}
+}
+relationship OneToMany {
+    Task{todos} to Todos{task(title)}
+}
+// Set pagination options
+paginate Todos with pagination
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+

@@ -1,0 +1,56 @@
+{
+    "name": "Todos",
+    "fields": [
+        {
+            "fieldName": "assinedTo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "completed",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "statust",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "remarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unit",
+            "otherEntityRelationshipName": "todos",
+            "relationshipName": "unit",
+            "otherEntityField": "unitTitle"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "todos",
+            "relationshipName": "task",
+            "otherEntityField": "title"
+        }
+    ],
+    "changelogDate": "20200501113900",
+    "entityTableName": "todos",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

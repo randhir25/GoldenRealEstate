@@ -1,0 +1,35 @@
+{
+    "name": "Building",
+    "fields": [
+        {
+            "fieldName": "buildingName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "unit",
+            "otherEntityRelationshipName": "building",
+            "relationshipName": "unit"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "building",
+            "relationshipName": "project",
+            "otherEntityField": "projectName"
+        }
+    ],
+    "changelogDate": "20200501113700",
+    "entityTableName": "building",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

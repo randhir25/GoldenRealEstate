@@ -1,0 +1,19 @@
+{
+  "home": {
+    "title": "Welcome, Golden Real Estate!",
+    "subtitle": "This is your homepage",
+    "logged": {
+      "message": "You are logged in as user \"{{username}}\"."
+    },
+    "question": "If you have any question on JHipster:",
+    "link": {
+      "homepage": "Golden Real Estate",
+      "stackoverflow": "Golden Real Estate on Stack Overflow",
+      "bugtracker": "Golden Real Estate bug tracker",
+      "chat": "Golden Real Estate public chat room",
+      "follow": "follow @jhipster on Twitter"
+    },
+    "like": "If you like Golden Real Estate, don't forget to give us a star on",
+    "github": "GitHub"
+  }
+}

@@ -1,0 +1,51 @@
+{
+    "name": "Address",
+    "fields": [
+        {
+            "fieldName": "streetName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stateProvince",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "country",
+            "otherEntityField": "countryName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "address",
+            "relationshipName": "project"
+        }
+    ],
+    "changelogDate": "20200501114300",
+    "entityTableName": "address",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

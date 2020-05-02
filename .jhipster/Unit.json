@@ -1,0 +1,43 @@
+{
+    "name": "Unit",
+    "fields": [
+        {
+            "fieldName": "unitTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "floorNo",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "todos",
+            "otherEntityRelationshipName": "unit",
+            "relationshipName": "todos"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "building",
+            "otherEntityRelationshipName": "unit",
+            "relationshipName": "building",
+            "otherEntityField": "buildingName"
+        }
+    ],
+    "changelogDate": "20200501113800",
+    "entityTableName": "unit",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
