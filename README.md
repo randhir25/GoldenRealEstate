@@ -1,3 +1,69 @@
+CREATE TABLE IF NOT EXISTS variables (
+    id VARCHAR(36) NOT NULL,
+    display_name VARCHAR(100) NOT NULL,
+    system_name VARCHAR(100) NOT NULL,
+    data_type VARCHAR(20) NOT NULL,
+    variable_type VARCHAR(20) NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    updated_at DATETIME(6),
+    PRIMARY KEY (id),
+    UNIQUE KEY system_name_uk (system_name)
+);
+CREATE TABLE IF NOT EXISTS strategies (
+    id VARCHAR(36) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    updated_at DATETIME(6),
+    created_by VARCHAR(36) NOT NULL,
+    updated_by VARCHAR(36),
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE variables
+    ADD strategy_id VARCHAR(36) NOT NULL,
+    ADD CONSTRAINT strategy_fk FOREIGN KEY (strategy_id) REFERENCES strategies(id);
+	
+	ALTER TABLE variables
+    RENAME TO strategy_variables;
+	ALTER TABLE strategy_variables
+    RENAME COLUMN system_name TO name;
+	ALTER TABLE strategy_variables
+    DROP INDEX system_name_uk;
+ALTER TABLE strategy_variables
+    ADD CONSTRAINT name_uk UNIQUE (strategy_id, name);
+	CREATE TABLE IF NOT EXISTS strategy_flows (
+    id VARCHAR(36) NOT NULL,
+    strategy_id VARCHAR(36) NOT NULL,
+    flow JSON NOT NULL,
+    version INTEGER NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    created_by VARCHAR(36) NOT NULL,
+    updated_at DATETIME(6),
+    updated_by VARCHAR(36),
+    PRIMARY KEY (id),
+    UNIQUE KEY strategy_version_uk (strategy_id, version),
+    CONSTRAINT strategy_flow_fk FOREIGN KEY (strategy_id) REFERENCES strategies(id)
+);
+CREATE TABLE IF NOT EXISTS strategy_flow_variables (
+    id VARCHAR(36) NOT NULL,
+    strategy_variable_id VARCHAR(36) NOT NULL,
+    strategy_flow_id VARCHAR(36) NOT NULL,
+    flow JSON NOT NULL,
+    version INTEGER NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    created_by VARCHAR(36) NOT NULL,
+    updated_at DATETIME(6),
+    updated_by VARCHAR(36),
+    PRIMARY KEY (id),
+    UNIQUE KEY strategy_flow_variable_uk (strategy_variable_id, strategy_flow_id),
+    CONSTRAINT strategy_variable_fk FOREIGN KEY (strategy_variable_id) REFERENCES strategy_variables(id),
+    CONSTRAINT strategy_variable_flow_fk FOREIGN KEY (strategy_flow_id) REFERENCES strategy_flows(id)
+);
+
+
 # GoldenRealEstate
 
 This application was generated using JHipster 6.3.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.3.1](https://www.jhipster.tech/documentation-archive/v6.3.1).
